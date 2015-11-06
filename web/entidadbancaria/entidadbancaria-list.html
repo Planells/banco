@@ -1,0 +1,20 @@
+<table>
+            <tr>
+                
+                <td>nombre</td>
+                <td>Codigo Entidad</td>
+                <td>Fecha Creacion</td> 
+                <td>Direccion</td>
+                <td>Cif</td> 
+                <td>Accion</td> 
+            </tr>
+            <tr ng-repeat="entidadBancaria in entidadesBancarias">               
+                <td><a href="#/detail/{{entidadBancaria.idEntidadBancaria}}">{{entidadBancaria.nombre}}</a></td>  
+                <td>{{entidadBancaria.codigoEntidad}}</td> 
+                <td>{{entidadBancaria.fechaCreacion}}</td> 
+                <td>{{entidadBancaria.direccion}}</td> 
+                <td>{{entidadBancaria.cif}}</td>
+                <td><button ng-click="borrar(entidadBancaria.idEntidadBancaria)">borrar</button></td>
+            </tr>           
+        </table>
+        <a href="#/insert">Insertar</a>
