@@ -1,7 +1,7 @@
 
+ListController.$inject = ['$scope', '$log', 'entidadBancariaService'];
 
-
-app.controller("ListController", ['$scope', '$log', 'entidadBancariaService', function ($scope, $log, entidadBancariaService) {
+function ListController ($scope, $log, entidadBancariaService) {
 
 
         var response = entidadBancariaService.findAll();
@@ -19,9 +19,13 @@ app.controller("ListController", ['$scope', '$log', 'entidadBancariaService', fu
         };
 
 
-    }]);
+    };
+app.controller("ListController",ListController);
 
-app.controller("DetailController", ['$scope', "$routeParams", '$log', 'entidadBancariaService', function ($scope, $routeParams, $log, entidadBancariaService) {
+
+DetailController.$inject = ['$scope', "$routeParams", '$log', 'entidadBancariaService'];
+
+function DetailController ($scope, $routeParams, $log, entidadBancariaService) {
 
 
         var response = entidadBancariaService.detail($routeParams.idEntidadBancaria);
@@ -37,10 +41,14 @@ app.controller("DetailController", ['$scope', "$routeParams", '$log', 'entidadBa
                 $scope.entidadBancaria = data;
             });
         };
-    }]);
+    };
+    
+    app.controller("DetailController",DetailController);
 
 
-app.controller("InsertController", ['$scope', '$log', '$http','entidadBancariaService', function ($scope, $log, $http, entidadBancariaService) {
+    InsertController.$inject= ['$scope', '$log', '$http','entidadBancariaService'];
+    
+    function InsertController ($scope, $log, $http, entidadBancariaService) {
         
                
         var promise = entidadBancariaService.defaultValue();
@@ -62,5 +70,6 @@ app.controller("InsertController", ['$scope', '$log', '$http','entidadBancariaSe
                 $scope.entidadBancaria = data;
             });
         };
-    }]);
+    };
 
+    app.controller("InsertController",InsertController);
