@@ -4,10 +4,10 @@ ListController.$inject = ['$scope', '$log', 'entidadBancariaService'];
 function ListController ($scope, $log, entidadBancariaService) {
 
 
-        var response = entidadBancariaService.findAll();
+        var promise = entidadBancariaService.findAll();
 
-        response.success(function (data, status, headers, config) {
-            $scope.entidadesBancarias = data;
+        promise.then(function (response) {
+            $scope.entidadesBancarias = response.data;
         });
 
         $scope.borrar = function (idEntidadBancaria) {
@@ -28,10 +28,10 @@ DetailController.$inject = ['$scope', "$routeParams", '$log', 'entidadBancariaSe
 function DetailController ($scope, $routeParams, $log, entidadBancariaService) {
 
 
-        var response = entidadBancariaService.detail($routeParams.idEntidadBancaria);
+        var promise = entidadBancariaService.detail($routeParams.idEntidadBancaria);
 
-        response.success(function (data, status, headers, config) {
-            $scope.entidadBancaria = data;
+        promise.then(function (response) {
+            $scope.entidadBancaria = response.data;
         });
         $scope.modificar = function () {
           
